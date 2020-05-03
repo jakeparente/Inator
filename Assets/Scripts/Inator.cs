@@ -87,7 +87,6 @@ public class Inator : MonoBehaviour
         loadedObject.GetComponent<Rigidbody>().useGravity = false;
         loadedObject.transform.tag = "LoadedObjectClone";
 
-        inatorText.color = Color.black;
         loadedMaterial = null;
     }
 
@@ -98,7 +97,6 @@ public class Inator : MonoBehaviour
         inatorText.text = scannedName + "-inator!";
         loadedMaterial = scannedMaterial;
 
-        inatorText.color = scannedMaterial.color;
         loadedObject = null;
     }
 }
