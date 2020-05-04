@@ -75,6 +75,7 @@ public class ScannableObject : MonoBehaviour
     //Return object to original state when shot by the reset-inator
     public void Reset()
     {
+        Debug.Log(name + " reset");
         for (int i = 0; i < meshRenderers.Length; i++)
             meshRenderers[i].material = originalMaterials[i];
 
