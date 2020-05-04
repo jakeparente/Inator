@@ -8,6 +8,7 @@ public class ScannableObject : MonoBehaviour
 {
     public string scannedName;
     public Inator inator;
+    public GameObject socketPF;
 
     public virtual void Start()
     {
