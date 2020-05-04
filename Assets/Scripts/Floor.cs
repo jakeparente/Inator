@@ -16,5 +16,7 @@ public class Floor : MaterialGiver
         Debug.Log(str);
         if (str == "Eraser")
             return;
+        else if (str == "Reset")
+            Reset();
     }
 }

@@ -8,11 +8,18 @@ public class ScannableObject : MonoBehaviour
 {
     public string scannedName;
     public Inator inator;
-    public GameObject socketPF;
+
+    //Tracked for Reset()
+    private MeshRenderer[] meshRenderers;
+    private Material[] originalMaterials;
+    private GameObject[] attatchedSpawnedObjects;
 
     public virtual void Start()
     {
-        
+        meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        originalMaterials = new Material[meshRenderers.Length];
+        for (int i = 0; i < meshRenderers.Length; i++)
+            originalMaterials[i] = meshRenderers[i].material;
     }
 
     //Detect when an object is scanned
@@ -33,6 +40,8 @@ public class ScannableObject : MonoBehaviour
     {
         if (tag == "Eraser")
             Destroy(this.gameObject);
+        else if (tag == "Reset")
+            Reset();
     }
 
     //Shot with a material
@@ -61,5 +70,17 @@ public class ScannableObject : MonoBehaviour
         spawnedObject.GetComponent<Rigidbody>().isKinematic = true;
         spawnedObject.GetComponent<Rigidbody>().mass = 0;
         Destroy(spawnedObject.GetComponent<XRGrabInteractable>());
+    }
+
+    //Return object to original state when shot by the reset-inator
+    public void Reset()
+    {
+        for (int i = 0; i < meshRenderers.Length; i++)
+            meshRenderers[i].material = originalMaterials[i];
+
+        Transform[] children = GetComponentsInChildren<Transform>();
+        foreach (Transform child in children)
+            if (child.tag == "SpawnedLoadedObject")
+                Destroy(child.gameObject);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Eraser : ScannableObject
+public class NameGiver : ScannableObject
 {
     public override void OnScan()
     {

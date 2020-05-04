@@ -7,7 +7,7 @@ using UnityEditor;
 
 public class Inator : MonoBehaviour
 {
-    public enum InatorType { Empty, Material, Object, Eraser, Projectile }
+    public enum InatorType { Empty, Material, Object, Eraser, Projectile, Reset }
     public InatorType type;
 
     public Material loadedMaterial = null;
@@ -52,6 +52,8 @@ public class Inator : MonoBehaviour
                 hit.transform.gameObject.GetComponent<ScannableObject>().OnShot(loadedMaterial);
             else if (type == InatorType.Eraser)
                 hit.transform.gameObject.GetComponent<ScannableObject>().OnShot("Eraser");
+            else if (type == InatorType.Reset)
+                hit.transform.gameObject.GetComponent<ScannableObject>().OnShot("Reset");
         }
     }
 
@@ -70,9 +72,9 @@ public class Inator : MonoBehaviour
         inatorText.text = scannedName + "-inator!";
 
         if (scannedName == "Eraser")
-        {
             type = InatorType.Eraser;
-        }
+        else if (scannedName == "Reset")
+            type = InatorType.Reset;
 
         loadedMaterial = null;
         loadedObject = null;
@@ -95,9 +97,9 @@ public class Inator : MonoBehaviour
         inatorText.text = scannedName + "-inator!";
 
         //Find any other loaded objects under the map and delete them
-        GameObject[] loadedObjects = GameObject.FindGameObjectsWithTag("LoadedObjectClone");
+        /*GameObject[] loadedObjects = GameObject.FindGameObjectsWithTag("LoadedObjectClone");
         foreach (GameObject obj in loadedObjects)
-            Destroy(obj);
+            Destroy(obj);*/
 
         //Instantiate a clone of the object and spawn it under the map
         loadedObject = Instantiate(scannedObject);
