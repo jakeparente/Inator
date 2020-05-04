@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  socketPF: {fileID: 0}
 --- !u!114 &7341394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: Projectile
   inator: {fileID: 766053657}
+  socketPF: {fileID: 0}
 --- !u!114 &194356500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,6 +666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  socketPF: {fileID: 0}
 --- !u!114 &456681724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,7 +845,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459087532}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1147,9 +1150,10 @@ MonoBehaviour:
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
-  m_ModelPrefab: {fileID: 0}
-  m_ModelTransform: {fileID: 0}
-  m_AnimateModel: 0
+  m_ModelPrefab: {fileID: 109434732395451517, guid: 65847589f926b734d9eaed6e25f0046b,
+    type: 3}
+  m_ModelTransform: {fileID: 400054, guid: ca20b3907ff1c794cb89c1ad2cce8282, type: 3}
+  m_AnimateModel: 1
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
 --- !u!135 &459087538
@@ -1420,6 +1424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: Tophat
   inator: {fileID: 766053657}
+  socketPF: {fileID: 0}
 --- !u!114 &691259649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1668,6 +1673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  socketPF: {fileID: 0}
 --- !u!114 &712463564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,6 +2027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: baby
   inator: {fileID: 766053657}
+  socketPF: {fileID: 0}
 --- !u!54 &760210160
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2348,6 +2355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  socketPF: {fileID: 0}
 --- !u!114 &957443329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2678,7 +2686,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256362512}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2983,9 +2991,10 @@ MonoBehaviour:
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
-  m_ModelPrefab: {fileID: 0}
-  m_ModelTransform: {fileID: 0}
-  m_AnimateModel: 0
+  m_ModelPrefab: {fileID: 5686134208185136530, guid: 1fd3a7c43c8190f4d8c167ebde694364,
+    type: 3}
+  m_ModelTransform: {fileID: 400054, guid: d0c255d07fd68f14b94e55d388e7e6bb, type: 3}
+  m_AnimateModel: 1
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
 --- !u!135 &1256362518
@@ -3051,6 +3060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  socketPF: {fileID: 0}
 --- !u!114 &1279670006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3390,6 +3400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: Eraser
   inator: {fileID: 766053657}
+  socketPF: {fileID: 0}
 --- !u!4 &1322218324
 Transform:
   m_ObjectHideFlags: 0
@@ -3714,6 +3725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  socketPF: {fileID: 0}
 --- !u!1 &1890683520
 GameObject:
   m_ObjectHideFlags: 0
@@ -3863,6 +3875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  socketPF: {fileID: 0}
 --- !u!114 &1917221716
 MonoBehaviour:
   m_ObjectHideFlags: 0
