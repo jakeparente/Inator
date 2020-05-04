@@ -13,6 +13,7 @@ public class Floor : MaterialGiver
     //So the floor can't be deleted
     public override void OnShot(string str)
     {
+        Debug.Log(str);
         if (str == "Eraser")
             return;
     }

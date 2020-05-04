@@ -6,7 +6,7 @@ public class ProjectileGiver : ScannableObject
 {
     public override void OnScan()
     {
-        inator.LoadInator(scannedName, this.gameObject);
+        inator.LoadInator(scannedName, this.gameObject, true);
         base.OnScan();
     }
 }

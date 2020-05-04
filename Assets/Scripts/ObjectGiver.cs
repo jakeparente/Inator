@@ -6,7 +6,7 @@ public class ObjectGiver : ScannableObject
 {
     public override void OnScan()
     {
-        inator.LoadInator(scannedName, this.gameObject);
+        inator.LoadInator(scannedName, this.gameObject, false);
         base.OnScan();
     }
 }

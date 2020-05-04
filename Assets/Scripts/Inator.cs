@@ -7,7 +7,7 @@ using UnityEditor;
 
 public class Inator : MonoBehaviour
 {
-    public enum InatorType { Empty, Material, Object, Eraser }
+    public enum InatorType { Empty, Material, Object, Eraser, Projectile }
     public InatorType type;
 
     public Material loadedMaterial = null;
@@ -33,8 +33,16 @@ public class Inator : MonoBehaviour
             Scan();
     }
 
+    public void ShootProjectile(GameObject loadedProjectile)
+    {
+        GameObject firedProjectile = Instantiate(loadedProjectile, raycastStartPoint.transform.position, raycastStartPoint.transform.rotation);
+        firedProjectile.GetComponent<Rigidbody>().AddForce(raycastStartPoint.transform.forward * 500f);
+    }
+
     public void Shoot()
     {
+        if (type == InatorType.Projectile && loadedObject != null)
+            ShootProjectile(loadedObject);
         if (Physics.Raycast(raycastStartPoint.transform.position, raycastStartPoint.transform.forward, out RaycastHit hit, range)
             && hit.transform.gameObject.GetComponent<ScannableObject>() != null)
         {
@@ -70,10 +78,20 @@ public class Inator : MonoBehaviour
         loadedObject = null;
     }
 
-    //Load the Inator with an object
-    public void LoadInator(string scannedName, GameObject scannedObject)
+    //Load the Inator with a material
+    public void LoadInator(string scannedName, Material scannedMaterial)
     {
-        type = InatorType.Object;
+        type = InatorType.Material;
+        inatorText.text = scannedName + "-inator!";
+        loadedMaterial = scannedMaterial;
+
+        loadedObject = null;
+    }
+
+    //Load the Inator with an object or projectile
+    public void LoadInator(string scannedName, GameObject scannedObject, bool projectileFlag)
+    {
+        type = projectileFlag ? InatorType.Projectile : InatorType.Object;
         inatorText.text = scannedName + "-inator!";
 
         //Find any other loaded objects under the map and delete them
@@ -84,19 +102,9 @@ public class Inator : MonoBehaviour
         //Instantiate a clone of the object and spawn it under the map
         loadedObject = Instantiate(scannedObject);
         loadedObject.transform.position = new Vector3(0f, -5f, 0f);
-        loadedObject.GetComponent<Rigidbody>().useGravity = false;
+        loadedObject.GetComponent<Rigidbody>().useGravity = (type == InatorType.Projectile) ? true : false;
         loadedObject.transform.tag = "LoadedObjectClone";
 
         loadedMaterial = null;
-    }
-
-    //Load the Inator with a material
-    public void LoadInator(string scannedName, Material scannedMaterial)
-    {
-        type = InatorType.Material;
-        inatorText.text = scannedName + "-inator!";
-        loadedMaterial = scannedMaterial;
-
-        loadedObject = null;
     }
 }

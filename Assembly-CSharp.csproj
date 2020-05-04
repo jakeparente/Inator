@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Eraser.cs" />
     <Compile Include="Assets\Scripts\Floor.cs" />
     <Compile Include="Assets\Scripts\Inator.cs" />
+    <Compile Include="Assets\Scripts\LookAtCamera.cs" />
     <Compile Include="Assets\Scripts\MaterialGiver.cs" />
     <Compile Include="Assets\Scripts\ObjectGiver.cs" />
     <Compile Include="Assets\Scripts\ProjectileGiver.cs" />
