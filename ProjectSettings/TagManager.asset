@@ -6,6 +6,9 @@ TagManager:
   tags:
   - SpawnedLoadedObject
   - LoadedObjectClone
+  - FiredProjectile
+  - SpawnedLoadedEffect
+  - Environment
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,6 @@ public class ScannableObject : MonoBehaviour
     //Tracked for Reset()
     private MeshRenderer[] meshRenderers;
     private Material[] originalMaterials;
-    private GameObject[] attatchedSpawnedObjects;
 
     public virtual void Start()
     {
@@ -25,14 +24,15 @@ public class ScannableObject : MonoBehaviour
     //Detect when an object is scanned
     public virtual void OnScan()
     {
-
     }
 
     //Shot with an object
     public virtual void OnShot(GameObject obj)
     {
         if (inator.type == Inator.InatorType.Object && obj != null)
-            SpawnObjectOnTop(obj);
+            SpawnObject(obj, false);
+        else if (inator.type == Inator.InatorType.Effect && obj != null)
+            SpawnObject(obj, true);
     }
 
     //Shot with something represented by a string
@@ -55,33 +55,55 @@ public class ScannableObject : MonoBehaviour
         }
     }
 
-    private void SpawnObjectOnTop(GameObject loadedObject)
+    //Spawn object or effect
+    public void SpawnObject(GameObject loadedObject, bool isEffect)
     {
+        if (isEffect)
+        {
+            Transform[] children = GetComponentsInChildren<Transform>();
+            foreach (Transform child in children)
+                if (child.transform.tag == "SpawnedLoadedEffect")
+                {
+                    Debug.Log("Effect already exists on " + transform.name);
+                    return;
+                }
+        }
         //Instantiate Object
         GameObject spawnedObject = Instantiate(loadedObject, this.transform);
-        spawnedObject.transform.tag = "SpawnedLoadedObject";
+        spawnedObject.transform.tag = isEffect ? "SpawnedLoadedEffect" : "SpawnedLoadedObject";
 
         //Reset size and position
-        spawnedObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        spawnedObject.transform.localPosition = Vector3.zero + (new Vector3(0f, 0.6f + (spawnedObject.transform.localScale.y / 2), 0f));
+
+        if (isEffect)
+        {
+            spawnedObject.transform.localPosition = Vector3.zero;
+            //spawnedObject.GetComponent<BoxCollider>().size = transform.lossyScale;// + new Vector3 (0.2f, 0.5f, 0.2f);
+        }
+        else
+        {
+            spawnedObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            spawnedObject.transform.localPosition = Vector3.zero + (new Vector3(0f, 0.6f + (spawnedObject.transform.localScale.y / 2), 0f));
+        }
         spawnedObject.transform.localRotation = Quaternion.identity;
 
-        //Remove components
-        spawnedObject.GetComponent<Rigidbody>().isKinematic = true;
-        spawnedObject.GetComponent<Rigidbody>().mass = 0;
-        Destroy(spawnedObject.GetComponent<XRGrabInteractable>());
+        //Remove components if spawnedObject has them
+        if (!isEffect)
+        {
+            spawnedObject.GetComponent<Rigidbody>().isKinematic = true;
+            spawnedObject.GetComponent<Rigidbody>().mass = 0;
+            Destroy(spawnedObject.GetComponent<XRGrabInteractable>());
+        }
     }
 
     //Return object to original state when shot by the reset-inator
-    public void Reset()
+    public virtual void Reset()
     {
-        Debug.Log(name + " reset");
         for (int i = 0; i < meshRenderers.Length; i++)
             meshRenderers[i].material = originalMaterials[i];
 
         Transform[] children = GetComponentsInChildren<Transform>();
         foreach (Transform child in children)
-            if (child.tag == "SpawnedLoadedObject")
+            if (child.tag == "SpawnedLoadedObject" || child.tag == "SpawnedLoadedEffect")
                 Destroy(child.gameObject);
     }
 }

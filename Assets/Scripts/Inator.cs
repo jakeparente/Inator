@@ -7,7 +7,7 @@ using UnityEditor;
 
 public class Inator : MonoBehaviour
 {
-    public enum InatorType { Empty, Material, Object, Eraser, Projectile, Reset }
+    public enum InatorType { Empty, Material, Object, Eraser, Projectile, Reset, Effect }
     public InatorType type;
 
     public Material loadedMaterial = null;
@@ -28,7 +28,7 @@ public class Inator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Fire1 and fire2 map to face buttons, need to bec changed to actual vr inputs
+        //Fire1 and fire2 map to face buttons, need to be changed to actual vr inputs
         if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
             Scan();
     }
@@ -37,16 +37,18 @@ public class Inator : MonoBehaviour
     {
         GameObject firedProjectile = Instantiate(loadedProjectile, raycastStartPoint.transform.position, raycastStartPoint.transform.rotation);
         firedProjectile.GetComponent<Rigidbody>().AddForce(raycastStartPoint.transform.forward * 500f);
+        firedProjectile.transform.tag = "FiredProjectile";
     }
 
     public void Shoot()
     {
         if (type == InatorType.Projectile && loadedObject != null)
             ShootProjectile(loadedObject);
-        if (Physics.Raycast(raycastStartPoint.transform.position, raycastStartPoint.transform.forward, out RaycastHit hit, range)
+
+        else if (Physics.Raycast(raycastStartPoint.transform.position, raycastStartPoint.transform.forward, out RaycastHit hit, range)
             && hit.transform.gameObject.GetComponent<ScannableObject>() != null)
         {
-            if (type == InatorType.Object)
+            if (type == InatorType.Object || type == InatorType.Effect)
                 hit.transform.gameObject.GetComponent<ScannableObject>().OnShot(loadedObject);
             else if (type == InatorType.Material)
                 hit.transform.gameObject.GetComponent<ScannableObject>().OnShot(loadedMaterial);
@@ -90,21 +92,31 @@ public class Inator : MonoBehaviour
         loadedObject = null;
     }
 
-    //Load the Inator with an object or projectile
+    //Load the Inator with an object, projectile, or effect
     public void LoadInator(string scannedName, GameObject scannedObject, bool projectileFlag)
     {
-        type = projectileFlag ? InatorType.Projectile : InatorType.Object;
+        //Bad way to do effects, i'll change it soon
+        if (scannedName == "Fire")
+            type = InatorType.Effect;
+        else
+            type = projectileFlag ? InatorType.Projectile : InatorType.Object;
+
         inatorText.text = scannedName + "-inator!";
 
         //Find any other loaded objects under the map and delete them
-        /*GameObject[] loadedObjects = GameObject.FindGameObjectsWithTag("LoadedObjectClone");
+        GameObject[] loadedObjects = GameObject.FindGameObjectsWithTag("LoadedObjectClone");
         foreach (GameObject obj in loadedObjects)
-            Destroy(obj);*/
+        {
+            Debug.Log(obj.name + " destroyed");
+            Destroy(obj);
+        }
 
         //Instantiate a clone of the object and spawn it under the map
         loadedObject = Instantiate(scannedObject);
         loadedObject.transform.position = new Vector3(0f, -5f, 0f);
-        loadedObject.GetComponent<Rigidbody>().useGravity = (type == InatorType.Projectile) ? true : false;
+
+        if (loadedObject.GetComponent<Rigidbody>() != null)
+            loadedObject.GetComponent<Rigidbody>().useGravity = (type == InatorType.Projectile) ? true : false;
         loadedObject.transform.tag = "LoadedObjectClone";
 
         loadedMaterial = null;
