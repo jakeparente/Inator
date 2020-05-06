@@ -15,9 +15,9 @@ public class MagnetGiver : ScannableObject
             meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnScan()
     {
-        
+        inator.LoadInator(scannedName, this.gameObject, false);
+        base.OnScan();
     }
 }

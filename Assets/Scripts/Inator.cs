@@ -7,7 +7,7 @@ using UnityEditor;
 
 public class Inator : MonoBehaviour
 {
-    public enum InatorType { Empty, Material, Object, Eraser, Projectile, Reset, Effect }
+    public enum InatorType { Empty, Material, Object, Eraser, Projectile, Reset, Effect, Magnet }
     public InatorType type;
 
     public Material loadedMaterial = null;
@@ -57,6 +57,8 @@ public class Inator : MonoBehaviour
                 hit.transform.gameObject.GetComponent<ScannableObject>().OnShot("Eraser");
             else if (type == InatorType.Reset)
                 hit.transform.gameObject.GetComponent<ScannableObject>().OnShot("Reset");
+            else if (type == InatorType.Magnet)
+                hit.transform.gameObject.GetComponent<ScannableObject>().OnShot("Magnet");
         }
     }
 
@@ -78,6 +80,8 @@ public class Inator : MonoBehaviour
             type = InatorType.Eraser;
         else if (scannedName == "Reset")
             type = InatorType.Reset;
+        else if (scannedName == "Magnet")
+            type = InatorType.Magnet;
 
         loadedMaterial = null;
         loadedObject = null;

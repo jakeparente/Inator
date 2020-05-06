@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8571c5d9ed68efd49b2bae95d05f250b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceFactor: 2500
+  forceFactor: 1500
 --- !u!135 &422845732
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3771,7 +3771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425be2826584c8540b00fb38c10bc605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scannedName: 
+  scannedName: Magnet
   inator: {fileID: 766053657}
   meshRenderer: {fileID: 0}
   backupMaterial: {fileID: 0}
