@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Inator : MonoBehaviour
 {
@@ -23,14 +24,6 @@ public class Inator : MonoBehaviour
     {
         inatorText = GetComponentInChildren<TextMeshProUGUI>();
         type = InatorType.Empty;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Fire1 and fire2 map to face buttons, need to be changed to actual vr inputs
-        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
-            Scan();
     }
 
     public void ShootProjectile(GameObject loadedProjectile)
