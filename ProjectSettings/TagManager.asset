@@ -9,6 +9,7 @@ TagManager:
   - FiredProjectile
   - SpawnedLoadedEffect
   - Environment
+  - Magnetic
   layers:
   - Default
   - TransparentFX
