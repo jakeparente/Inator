@@ -171,6 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  meshRenderer: {fileID: 0}
+  backupMaterial: {fileID: 0}
 --- !u!114 &7341394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1050,6 +1052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  meshRenderer: {fileID: 0}
+  backupMaterial: {fileID: 0}
 --- !u!114 &456681724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,10 +1214,10 @@ GameObject:
   m_Component:
   - component: {fileID: 459087533}
   - component: {fileID: 459087537}
-  - component: {fileID: 459087536}
   - component: {fileID: 459087535}
   - component: {fileID: 459087534}
   - component: {fileID: 459087538}
+  - component: {fileID: 459087536}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -1449,15 +1453,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459087532}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 1394962610}
   m_InteractionLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 4294967295
   m_AttachTransform: {fileID: 0}
   m_StartingSelectedInteractable: {fileID: 0}
   m_OnHoverEnter:
@@ -1473,7 +1477,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_SelectActionTrigger: 1
-  m_HideControllerOnSelect: 1
+  m_HideControllerOnSelect: 0
   m_PlayAudioClipOnSelectEnter: 0
   m_AudioClipForOnSelectEnter: {fileID: 0}
   m_PlayAudioClipOnSelectExit: 0
@@ -1482,38 +1486,18 @@ MonoBehaviour:
   m_AudioClipForOnHoverEnter: {fileID: 0}
   m_PlayAudioClipOnHoverExit: 0
   m_AudioClipForOnHoverExit: {fileID: 0}
-  m_PlayHapticsOnSelectEnter: 1
-  m_HapticSelectEnterIntensity: 0.5
-  m_HapticSelectEnterDuration: 0.1
-  m_PlayHapticsOnSelectExit: 1
+  m_PlayHapticsOnSelectEnter: 0
+  m_HapticSelectEnterIntensity: 0
+  m_HapticSelectEnterDuration: 0
+  m_PlayHapticsOnSelectExit: 0
   m_HapticSelectExitIntensity: 0
   m_HapticSelectExitDuration: 0
-  m_PlayHapticsOnHoverEnter: 1
-  m_HapticHoverEnterIntensity: 0.1
-  m_HapticHoverEnterDuration: 0.1
+  m_PlayHapticsOnHoverEnter: 0
+  m_HapticHoverEnterIntensity: 0
+  m_HapticHoverEnterDuration: 0
   m_PlayHapticsOnHoverExit: 0
   m_HapticHoverExitIntensity: 0
   m_HapticHoverExitDuration: 0
-  m_LineType: 1
-  m_MaxRaycastDistance: 30
-  m_ReferenceFrame: {fileID: 0}
-  m_Velocity: 8
-  m_Acceleration: 9.8
-  m_AdditionalFlightTime: 0.5
-  m_EndPointDistance: 30
-  m_EndPointHeight: -10
-  m_ControlPointDistance: 10
-  m_ControlPointHeight: 5
-  m_SampleFrequency: 20
-  m_HitDetectionType: 0
-  m_SphereCastRadius: 0
-  m_RaycastMask:
-    serializedVersion: 2
-    m_Bits: 256
-  m_RaycastTriggerInteraction: 1
-  m_HoverToSelect: 0
-  m_HoverTimeToSelect: 0.5
-  m_EnableUIInteraction: 1
 --- !u!114 &459087537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2279,6 +2263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  meshRenderer: {fileID: 0}
+  backupMaterial: {fileID: 0}
 --- !u!114 &712463564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2490,7 +2476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4274653050354540, guid: e55149ba6f4d00741984987e258c3378, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4274653050354540, guid: e55149ba6f4d00741984987e258c3378, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3225,6 +3211,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  meshRenderer: {fileID: 0}
+  backupMaterial: {fileID: 0}
 --- !u!114 &957443329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3683,13 +3671,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155173284}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9451ecf10ed8c014288f8f3e20284082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   leftTeleportRay: {fileID: 117315860}
-  teleportActivationButton: 3
+  teleportActivationButton: 14
   activationThreshhold: 0.1
 --- !u!1 &1210001571
 GameObject:
@@ -3798,7 +3786,7 @@ Transform:
   m_Children:
   - {fileID: 1405580519}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1256362512
 GameObject:
@@ -4203,6 +4191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  meshRenderer: {fileID: 0}
+  backupMaterial: {fileID: 0}
 --- !u!114 &1279670006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9720,6 +9710,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  meshRenderer: {fileID: 0}
+  backupMaterial: {fileID: 0}
 --- !u!114 &1846561919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9914,6 +9906,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: 
   inator: {fileID: 766053657}
+  meshRenderer: {fileID: 0}
+  backupMaterial: {fileID: 0}
 --- !u!114 &1917221716
 MonoBehaviour:
   m_ObjectHideFlags: 0

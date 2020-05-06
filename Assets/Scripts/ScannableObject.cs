@@ -77,7 +77,6 @@ public class ScannableObject : MonoBehaviour
         if (isEffect)
         {
             spawnedObject.transform.localPosition = Vector3.zero;
-            //spawnedObject.GetComponent<BoxCollider>().size = transform.lossyScale;// + new Vector3 (0.2f, 0.5f, 0.2f);
         }
         else
         {
