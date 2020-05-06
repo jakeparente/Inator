@@ -49,6 +49,11 @@ public class ScannableObject : MonoBehaviour
     {
         if (inator.type == Inator.InatorType.Material && material != null)
         {
+            if (GetComponent<SpriteRenderer>())
+            {
+                GetComponent<SpriteRenderer>().color = material.color;
+                return;
+            }
             MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
             foreach (MeshRenderer m in meshRenderers)
                 m.material = material;
@@ -73,15 +78,15 @@ public class ScannableObject : MonoBehaviour
         spawnedObject.transform.tag = isEffect ? "SpawnedLoadedEffect" : "SpawnedLoadedObject";
 
         //Reset size and position
-
         if (isEffect)
         {
             spawnedObject.transform.localPosition = Vector3.zero;
         }
         else
         {
-            spawnedObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            spawnedObject.transform.localPosition = Vector3.zero + (new Vector3(0f, 0.6f + (spawnedObject.transform.localScale.y / 2), 0f));
+            spawnedObject.transform.localScale = new Vector3(GetHeight(), GetHeight(), GetHeight());
+            //spawnedObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            spawnedObject.transform.localPosition = Vector3.zero + (new Vector3(0f, GetHeight(), 0f));
         }
         spawnedObject.transform.localRotation = Quaternion.identity;
 
@@ -94,11 +99,27 @@ public class ScannableObject : MonoBehaviour
         }
     }
 
+    private float GetHeight()
+    {
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        float max = 0f;
+
+        foreach (Collider collider in colliders)
+        {
+            if (collider.bounds.size.y >= max)
+                max = collider.bounds.size.y;
+        }
+        return max / transform.localScale.y;
+    }
+
     //Return object to original state when shot by the reset-inator
     public virtual void Reset()
     {
-        for (int i = 0; i < meshRenderers.Length; i++)
-            meshRenderers[i].material = originalMaterials[i];
+        if (meshRenderers.Length != 0)
+        {
+            for (int i = 0; i < meshRenderers.Length; i++)
+                meshRenderers[i].material = originalMaterials[i];
+        }
 
         Transform[] children = GetComponentsInChildren<Transform>();
         foreach (Transform child in children)
