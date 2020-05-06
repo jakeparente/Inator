@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
 using UnityEngine.XR.Interaction.Toolkit;
+using System;
 
 public class Inator : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class Inator : MonoBehaviour
         else if (Physics.Raycast(raycastStartPoint.transform.position, raycastStartPoint.transform.forward, out RaycastHit hit, range)
             && hit.transform.gameObject.GetComponent<ScannableObject>() != null)
         {
-            if (type == InatorType.Object || type == InatorType.Effect)
+            if (type == InatorType.Object || type == InatorType.Effect || type == InatorType.Magnet)
                 hit.transform.gameObject.GetComponent<ScannableObject>().OnShot(loadedObject);
             else if (type == InatorType.Material)
                 hit.transform.gameObject.GetComponent<ScannableObject>().OnShot(loadedMaterial);
@@ -50,8 +51,6 @@ public class Inator : MonoBehaviour
                 hit.transform.gameObject.GetComponent<ScannableObject>().OnShot("Eraser");
             else if (type == InatorType.Reset)
                 hit.transform.gameObject.GetComponent<ScannableObject>().OnShot("Reset");
-            else if (type == InatorType.Magnet)
-                hit.transform.gameObject.GetComponent<ScannableObject>().OnShot("Magnet");
         }
     }
 
@@ -73,8 +72,6 @@ public class Inator : MonoBehaviour
             type = InatorType.Eraser;
         else if (scannedName == "Reset")
             type = InatorType.Reset;
-        else if (scannedName == "Magnet")
-            type = InatorType.Magnet;
 
         loadedMaterial = null;
         loadedObject = null;
@@ -90,14 +87,11 @@ public class Inator : MonoBehaviour
         loadedObject = null;
     }
 
-    //Load the Inator with an object, projectile, or effect
-    public void LoadInator(string scannedName, GameObject scannedObject, bool projectileFlag)
+    //Load the Inator with an object, projectile, effect, or magnet
+    public void LoadInator(string scannedName, GameObject scannedObject, string tag)
     {
-        //Bad way to do effects, i'll change it soon
-        if (scannedName == "Fire")
-            type = InatorType.Effect;
-        else
-            type = projectileFlag ? InatorType.Projectile : InatorType.Object;
+        //Convert tag to enum
+        type = (InatorType)System.Enum.Parse(typeof(InatorType), tag);
 
         inatorText.text = scannedName + "-inator!";
 
@@ -105,18 +99,17 @@ public class Inator : MonoBehaviour
         GameObject[] loadedObjects = GameObject.FindGameObjectsWithTag("LoadedObjectClone");
         foreach (GameObject obj in loadedObjects)
         {
-            Debug.Log(obj.name + " destroyed");
             Destroy(obj);
         }
 
         //Instantiate a clone of the object and spawn it under the map
         loadedObject = Instantiate(scannedObject);
-        loadedObject.transform.position = new Vector3(0f, -5f, 0f);
+        loadedObject.transform.position = new Vector3(0f, -10f, 0f);
 
         if (loadedObject.GetComponent<Rigidbody>() != null)
             loadedObject.GetComponent<Rigidbody>().useGravity = (type == InatorType.Projectile) ? true : false;
-        loadedObject.transform.tag = "LoadedObjectClone";
 
+        loadedObject.transform.tag = "LoadedObjectClone";
         loadedMaterial = null;
     }
 }

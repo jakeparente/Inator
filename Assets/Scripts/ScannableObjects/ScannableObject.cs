@@ -33,6 +33,8 @@ public class ScannableObject : MonoBehaviour
             SpawnObject(obj, false);
         else if (inator.type == Inator.InatorType.Effect && obj != null)
             SpawnObject(obj, true);
+        else if (inator.type == Inator.InatorType.Magnet && obj != null)
+            SpawnMagnet(obj);
     }
 
     //Shot with something represented by a string
@@ -60,6 +62,18 @@ public class ScannableObject : MonoBehaviour
         }
     }
 
+    //Spawn Magnet
+    private void SpawnMagnet(GameObject loadedObject)
+    {
+        //Instantiate Object
+        GameObject spawnedObject = Instantiate(loadedObject, this.transform);
+        spawnedObject.transform.tag = "SpawnedLoadedObject";
+        spawnedObject.transform.localPosition = Vector3.zero;
+
+        transform.tag = (transform.tag == "Magnetic") ? transform.tag = "Untagged" : transform.tag;
+        
+    }
+
     //Spawn object or effect
     public void SpawnObject(GameObject loadedObject, bool isEffect)
     {
@@ -68,35 +82,25 @@ public class ScannableObject : MonoBehaviour
             Transform[] children = GetComponentsInChildren<Transform>();
             foreach (Transform child in children)
                 if (child.transform.tag == "SpawnedLoadedEffect")
-                {
-                    Debug.Log("Effect already exists on " + transform.name);
                     return;
-                }
         }
+
         //Instantiate Object
         GameObject spawnedObject = Instantiate(loadedObject, this.transform);
         spawnedObject.transform.tag = isEffect ? "SpawnedLoadedEffect" : "SpawnedLoadedObject";
 
         //Reset size and position
         if (isEffect)
-        {
             spawnedObject.transform.localPosition = Vector3.zero;
-        }
         else
         {
             spawnedObject.transform.localScale = new Vector3(GetHeight(), GetHeight(), GetHeight());
-            //spawnedObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             spawnedObject.transform.localPosition = Vector3.zero + (new Vector3(0f, GetHeight(), 0f));
-        }
-        spawnedObject.transform.localRotation = Quaternion.identity;
-
-        //Remove components if spawnedObject has them
-        if (!isEffect)
-        {
             spawnedObject.GetComponent<Rigidbody>().isKinematic = true;
             spawnedObject.GetComponent<Rigidbody>().mass = 0;
             Destroy(spawnedObject.GetComponent<XRGrabInteractable>());
         }
+        spawnedObject.transform.localRotation = Quaternion.identity;
     }
 
     private float GetHeight()

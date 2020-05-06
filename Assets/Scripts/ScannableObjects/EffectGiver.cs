@@ -21,7 +21,7 @@ public class EffectGiver : ScannableObject
 
     public override void OnScan()
     {
-        inator.LoadInator(scannedName, this.gameObject, false);
+        inator.LoadInator(scannedName, this.gameObject, "Effect");
         base.OnScan();
     }
 

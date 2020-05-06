@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileGiver : ScannableObject
+public class MagnetGiver : ScannableObject
 {
     public override void OnScan()
     {
-        inator.LoadInator(scannedName, this.gameObject, true);
+        inator.LoadInator(scannedName, transform.GetChild(0).gameObject, "Magnet");
         base.OnScan();
     }
 }
