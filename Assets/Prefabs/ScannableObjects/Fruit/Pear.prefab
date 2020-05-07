@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8611641095006664341}
   - component: {fileID: 8645144754546366913}
   - component: {fileID: 8637115102544654065}
-  - component: {fileID: 8615115120269117346}
   - component: {fileID: -2196706316765580580}
   - component: {fileID: 7279132121661364469}
   - component: {fileID: 6206050760078338025}
+  - component: {fileID: 784828761843716667}
   m_Layer: 0
   m_Name: Pear
   m_TagString: Untagged
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8615115120269117346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8615115120269117345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027601cfc2edd9441aca13ebf1273e4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scannedName: Pear
-  inator: {fileID: 0}
 --- !u!136 &-2196706316765580580
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -201,3 +187,17 @@ MonoBehaviour:
   m_ThrowAngularVelocityScale: 0.25
   m_GravityOnDetach: 0
   m_RetainTransformParent: 1
+--- !u!114 &784828761843716667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615115120269117345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027601cfc2edd9441aca13ebf1273e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scannedName: Pear
+  inator: {fileID: 0}

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1264711034007515700}
   - component: {fileID: 1294273996296110136}
   - component: {fileID: 1284269586502605984}
-  - component: {fileID: 1261183271942655551}
   - component: {fileID: 1111951886490118209}
   - component: {fileID: 7368591034531062289}
   - component: {fileID: -3314557112345854435}
+  - component: {fileID: 7459372050385687543}
   m_Layer: 0
   m_Name: Banana
   m_TagString: Untagged
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1261183271942655551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261183271942655548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027601cfc2edd9441aca13ebf1273e4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scannedName: Banananananananananananana
-  inator: {fileID: 0}
 --- !u!65 &1111951886490118209
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -200,3 +186,17 @@ MonoBehaviour:
   m_ThrowAngularVelocityScale: 0.25
   m_GravityOnDetach: 0
   m_RetainTransformParent: 1
+--- !u!114 &7459372050385687543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261183271942655548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027601cfc2edd9441aca13ebf1273e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scannedName: Banana
+  inator: {fileID: 0}

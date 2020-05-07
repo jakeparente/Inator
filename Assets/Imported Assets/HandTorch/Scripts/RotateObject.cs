@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotateObject : MonoBehaviour {
 
-	[SerializeField]private float Sensitivity;
+	[SerializeField]private float Sensitivity = 2f;
 
 	public bool isRotating;
 	

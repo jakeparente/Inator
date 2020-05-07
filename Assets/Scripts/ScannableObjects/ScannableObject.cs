@@ -63,7 +63,7 @@ public class ScannableObject : MonoBehaviour
     }
 
     //Spawn Magnet
-    private void SpawnMagnet(GameObject loadedObject)
+    public void SpawnMagnet(GameObject loadedObject)
     {
         //Instantiate Object
         GameObject spawnedObject = Instantiate(loadedObject, this.transform);
@@ -123,11 +123,15 @@ public class ScannableObject : MonoBehaviour
         {
             for (int i = 0; i < meshRenderers.Length; i++)
                 meshRenderers[i].material = originalMaterials[i];
+            Debug.Log(name + " materials reset");
         }
 
         Transform[] children = GetComponentsInChildren<Transform>();
         foreach (Transform child in children)
             if (child.tag == "SpawnedLoadedObject" || child.tag == "SpawnedLoadedEffect")
+            {
                 Destroy(child.gameObject);
+                Debug.Log(child.gameObject.name + " destroyed");
+            }
     }
 }
