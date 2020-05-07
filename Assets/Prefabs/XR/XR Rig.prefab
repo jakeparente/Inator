@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1427629255748495371}
   - component: {fileID: 1427629255748495364}
   - component: {fileID: 1427629255748495370}
+  - component: {fileID: 6385495867199332492}
   m_Layer: 0
   m_Name: XR Rig
   m_TagString: Untagged
@@ -96,6 +97,26 @@ MonoBehaviour:
   leftHandController: {fileID: 1427629257233775890}
   teleportActivationButton: 14
   activationThreshhold: 0.1
+--- !u!114 &6385495867199332492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427629255748495367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4f2c0214c9b494fa7eb5b8b2c02885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_System: {fileID: 0}
+  m_TurnUsage: 0
+  m_Controllers:
+  - {fileID: 1427629257233775890}
+  - {fileID: 1427629255916794294}
+  m_TurnAmount: 60
+  m_DebounceTime: 0.5
+  m_DeadZone: 0.75
 --- !u!1 &1427629255916794291
 GameObject:
   m_ObjectHideFlags: 0
