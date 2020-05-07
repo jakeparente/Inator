@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2954728025927748874}
   - component: {fileID: 2954728025927748873}
   - component: {fileID: 2954728025927748872}
+  - component: {fileID: 5885102353214836555}
   m_Layer: 0
   m_Name: Tophat
   m_TagString: Untagged
@@ -139,6 +140,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: Tophat
   inator: {fileID: 0}
+--- !u!114 &5885102353214836555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954728025927748855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598135a715514fa4e9f70a417f703d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topHatLocation: {x: 0, y: 0.25, z: 0}
+  scale: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!1 &2954728025980413419
 GameObject:
   m_ObjectHideFlags: 0

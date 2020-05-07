@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 7203032504011433842}
   - component: {fileID: 7203032504011433841}
   - component: {fileID: 7203032504011433840}
+  - component: {fileID: 1968735278741839444}
   m_Layer: 0
   m_Name: Reset Cube
   m_TagString: Untagged
@@ -265,6 +266,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: Reset
   inator: {fileID: 0}
+--- !u!114 &1968735278741839444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203032504011433847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598135a715514fa4e9f70a417f703d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topHatLocation: {x: 0, y: 0.66, z: 0}
+  scale: {x: 1, y: 1, z: 1}
 --- !u!1 &7203032504107399986
 GameObject:
   m_ObjectHideFlags: 0

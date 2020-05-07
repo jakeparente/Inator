@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7279132121661364469}
   - component: {fileID: 6206050760078338025}
   - component: {fileID: 784828761843716667}
+  - component: {fileID: 5859653111735108200}
   m_Layer: 0
   m_Name: Pear
   m_TagString: Fruit
@@ -201,3 +202,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: Pear
   inator: {fileID: 0}
+--- !u!114 &5859653111735108200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615115120269117345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598135a715514fa4e9f70a417f703d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topHatLocation: {x: 0, y: 0.153, z: 0}
+  scale: {x: 0.1, y: 0.1, z: 0.1}
+  rotation: {x: 0, y: 0, z: 0, w: 1}

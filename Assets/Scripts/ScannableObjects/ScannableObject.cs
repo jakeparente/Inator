@@ -30,7 +30,12 @@ public class ScannableObject : MonoBehaviour
     public virtual void OnShot(GameObject obj)
     {
         if (inator.type == Inator.InatorType.Object && obj != null)
-            SpawnObject(obj, false);
+        {
+            if (GetComponent<TopHatLocation>())
+                GetComponent<TopHatLocation>().SpawnTopHat(obj);
+            else
+                SpawnObject(obj, false);
+        }
         else if (inator.type == Inator.InatorType.Effect && obj != null)
             SpawnObject(obj, true);
         else if (inator.type == Inator.InatorType.Magnet && obj != null)
