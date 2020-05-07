@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1888,9 +1888,9 @@ MonoBehaviour:
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
-  m_ModelPrefab: {fileID: 5686134208185136530, guid: 1fd3a7c43c8190f4d8c167ebde694364,
+  m_ModelPrefab: {fileID: 7761462763017399058, guid: 820d67446f98d554fadf9b73b8783c41,
     type: 3}
-  m_ModelTransform: {fileID: 641844038}
+  m_ModelTransform: {fileID: 0}
   m_AnimateModel: 0
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
@@ -2602,9 +2602,9 @@ MonoBehaviour:
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
-  m_ModelPrefab: {fileID: 109434732395451517, guid: 65847589f926b734d9eaed6e25f0046b,
+  m_ModelPrefab: {fileID: 7761462763017399058, guid: 0b5e7e555539efb4eaa6f9dd6f7c8033,
     type: 3}
-  m_ModelTransform: {fileID: 323869759}
+  m_ModelTransform: {fileID: 0}
   m_AnimateModel: 0
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
