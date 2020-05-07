@@ -6,6 +6,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine.XR.Interaction.Toolkit;
 using System;
+using UnityEngine.Audio;
 
 public class Inator : MonoBehaviour
 {
@@ -21,10 +22,17 @@ public class Inator : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI inatorText;
 
+    [HideInInspector]
+    public AudioSource audioSource;
+
+    public AudioClip scanClip;
+    public AudioClip shootClip;
+
     void Start()
     {
         inatorText = GetComponentInChildren<TextMeshProUGUI>();
         type = InatorType.Empty;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ShootProjectile(GameObject loadedProjectile)
@@ -37,6 +45,8 @@ public class Inator : MonoBehaviour
 
     public void Shoot()
     {
+        audioSource.clip = shootClip;
+        audioSource.Play();
         if (type == InatorType.Projectile && loadedObject != null)
             ShootProjectile(loadedObject);
 
@@ -56,6 +66,8 @@ public class Inator : MonoBehaviour
 
     public void Scan()
     {
+        audioSource.clip = scanClip;
+        audioSource.Play();
         if (Physics.Raycast(raycastStartPoint.transform.position, raycastStartPoint.transform.forward, out RaycastHit hit, range)
             && hit.transform.gameObject.GetComponent<ScannableObject>() != null)
         {
