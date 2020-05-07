@@ -62,7 +62,7 @@ public class EffectGiver : ScannableObject
     //transfer the effect when an object touches it
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<ScannableObject>() != null && other.gameObject.tag != "Environment")
+        if (other.gameObject.GetComponent<ScannableObject>() != null && other.gameObject.tag != "Environment" && other.gameObject.tag != "Fruit")
             other.gameObject.GetComponent<ScannableObject>().SpawnObject(this.gameObject, true);
     }
 }

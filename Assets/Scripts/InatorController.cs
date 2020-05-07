@@ -7,6 +7,7 @@ public class InatorController : MonoBehaviour
 {
     public bool isGrabbing = false;
     public Inator inator;
+    public GameObject handModel;
 
     private XRController controller;
     private XRBaseInteractor interactor;
@@ -18,6 +19,8 @@ public class InatorController : MonoBehaviour
         interactor = GetComponent<XRBaseInteractor>();
         controller = GetComponent<XRController>();
         scanButtons = new InputHelpers.Button[] { InputHelpers.Button.PrimaryButton, InputHelpers.Button.SecondaryButton };
+
+        handModel = transform.GetChild(0).gameObject;
     }
 
     void Update()
@@ -32,5 +35,9 @@ public class InatorController : MonoBehaviour
         }
     }
 
-    public void SetGrab(bool _isGrabbing) => isGrabbing = _isGrabbing;
+    public void SetGrab(bool _isGrabbing)
+    {
+        isGrabbing = _isGrabbing;
+        handModel.SetActive(!_isGrabbing);
+    }
 }
