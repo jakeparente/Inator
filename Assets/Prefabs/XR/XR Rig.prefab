@@ -507,6 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrabbing: 0
   inator: {fileID: 0}
+  handModel: {fileID: 0}
 --- !u!1 &1427629256409816601
 GameObject:
   m_ObjectHideFlags: 0
@@ -6097,6 +6098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrabbing: 0
   inator: {fileID: 0}
+  handModel: {fileID: 0}
 --- !u!1 &1427629257767912257
 GameObject:
   m_ObjectHideFlags: 0
