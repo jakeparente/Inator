@@ -131,6 +131,9 @@ public class ScannableObject : MonoBehaviour
             Debug.Log(name + " materials reset");
         }
 
+        if (GetComponent<SpriteRenderer>() != null)
+            GetComponent<SpriteRenderer>().color = GetComponent<MaterialGiver>().backupMaterial.color;
+
         Transform[] children = GetComponentsInChildren<Transform>();
         foreach (Transform child in children)
             if (child.tag == "SpawnedLoadedObject" || child.tag == "SpawnedLoadedEffect")

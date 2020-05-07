@@ -8,11 +8,14 @@ public class WallCubesPuzzle : MonoBehaviour
     public GameObject[] cubes = new GameObject[6];
     public int piecesLeft = 6;
 
+    public GameObject clue;
+
     public void CheckIfSolved()
     {
         if (piecesLeft <= 0)
         {
             Debug.Log("DING DING DING");
+            clue.SetActive(true);
             Destroy(this.gameObject);
         }
     }
