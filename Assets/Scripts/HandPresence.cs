@@ -25,8 +25,12 @@ public class HandPresence : MonoBehaviour
         if (devices.Count > 0)
             targetDevice = devices[0];
 
-        spawnedHandModel = Instantiate(handModelPrefab, transform);
-        handAnimator = spawnedHandModel.GetComponent<Animator>();
+        //Make sure only one hand can spawn per controller
+        if (transform.childCount == 0)
+        {
+            spawnedHandModel = Instantiate(handModelPrefab, transform);
+            handAnimator = spawnedHandModel.GetComponent<Animator>();
+        }
     }
 
     private void UpdateHandAnimation()

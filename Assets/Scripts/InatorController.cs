@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class InatorController : MonoBehaviour
@@ -31,7 +33,14 @@ public class InatorController : MonoBehaviour
             InputHelpers.IsPressed(controller.inputDevice, scanButtons[1], out bool secondaryActivated, activationThreshhold);
 
             if (primaryActivated || secondaryActivated)
+            {
+                controller.SendHapticImpulse(0.2f, 0.1f);
                 inator.Scan();
+            }
+
+            InputHelpers.IsPressed(controller.inputDevice, InputHelpers.Button.Trigger, out bool triggerActivated, activationThreshhold);
+            if (triggerActivated)
+                controller.SendHapticImpulse(0.4f, 0.1f);
         }
     }
 
