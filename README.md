@@ -2,8 +2,8 @@
 VR-JAM 2020 entry.
 
 ## Authors
-- Jake Parente.
-- Zach Sims.
+- Jake Parente
+- Zach Sims
 
 ## Assets
 - [Sci-fi Gun Sounds Pack](LITE https://assetstore.unity.com/packages/audio/sound-fx/weapons/sci-fi-gun-sounds-pack-lite-141125)
