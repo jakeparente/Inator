@@ -254,7 +254,7 @@ MonoBehaviour:
   m_HapticHoverExitIntensity: 0
   m_HapticHoverExitDuration: 0
   m_LineType: 0
-  m_MaxRaycastDistance: 30
+  m_MaxRaycastDistance: 1
   m_ReferenceFrame: {fileID: 0}
   m_Velocity: 16
   m_Acceleration: 9.8
@@ -5740,8 +5740,8 @@ GameObject:
   - component: {fileID: 1427629257233775884}
   - component: {fileID: 1427629257233775885}
   - component: {fileID: 1427629257233775889}
-  - component: {fileID: 1427629257233775891}
   - component: {fileID: 1427629257233775888}
+  - component: {fileID: 3082514265788522207}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -5900,7 +5900,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427629257233775887}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
   m_Name: 
@@ -6008,7 +6008,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1427629257233775891
+--- !u!114 &1427629257233775888
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6017,13 +6017,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1427629257233775887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
+  m_Script: {fileID: 11500000, guid: 947bf86ee0759e44193ead646e4c2d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGrabbing: 0
+  inator: {fileID: 0}
+  handModel: {fileID: 0}
+--- !u!114 &3082514265788522207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427629257233775887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
   m_AttachTransform: {fileID: 0}
   m_StartingSelectedInteractable: {fileID: 0}
   m_OnHoverEnter:
@@ -6034,34 +6049,12 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelectEnter:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1427629257233775888}
-        m_MethodName: SetGrab
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   m_OnSelectExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1427629257233775888}
-        m_MethodName: SetGrab
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectActionTrigger: 1
-  m_HideControllerOnSelect: 0
+  m_HideControllerOnSelect: 1
   m_PlayAudioClipOnSelectEnter: 0
   m_AudioClipForOnSelectEnter: {fileID: 0}
   m_PlayAudioClipOnSelectExit: 0
@@ -6082,21 +6075,26 @@ MonoBehaviour:
   m_PlayHapticsOnHoverExit: 0
   m_HapticHoverExitIntensity: 0
   m_HapticHoverExitDuration: 0
---- !u!114 &1427629257233775888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427629257233775887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947bf86ee0759e44193ead646e4c2d7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGrabbing: 0
-  inator: {fileID: 0}
-  handModel: {fileID: 0}
+  m_LineType: 0
+  m_MaxRaycastDistance: 1
+  m_ReferenceFrame: {fileID: 0}
+  m_Velocity: 16
+  m_Acceleration: 9.8
+  m_AdditionalFlightTime: 0.5
+  m_EndPointDistance: 30
+  m_EndPointHeight: -10
+  m_ControlPointDistance: 10
+  m_ControlPointHeight: 5
+  m_SampleFrequency: 20
+  m_HitDetectionType: 0
+  m_SphereCastRadius: 0
+  m_RaycastMask:
+    serializedVersion: 2
+    m_Bits: 55
+  m_RaycastTriggerInteraction: 1
+  m_HoverToSelect: 0
+  m_HoverTimeToSelect: 0.5
+  m_EnableUIInteraction: 1
 --- !u!1 &1427629257767912257
 GameObject:
   m_ObjectHideFlags: 0

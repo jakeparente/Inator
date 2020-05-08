@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class TreasureChestLock : ScannableObject
 {
-    public override void Start()
-    {
-    }
+    public TreasureChest chest;
 
     public override void OnShot(GameObject obj)
     {
@@ -24,5 +22,10 @@ public class TreasureChestLock : ScannableObject
             Destroy(this.gameObject);
         else
             return;
+    }
+
+    private void OnDestroy()
+    {
+        chest.WinCondition();
     }
 }

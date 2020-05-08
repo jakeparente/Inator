@@ -15,6 +15,8 @@ public class TorchFlame : ScannableObject
     public Material Yellow;
     public Material Black;
 
+    public GameObject eraser;
+
     void Update()
     {
         CheckAllStates();
@@ -93,5 +95,15 @@ public class TorchFlame : ScannableObject
             var main = system.main;
             main.startColor = Black.color;
         }
+
+        //Spawn the eraser when the puzzle is solved
+        eraser.SetActive(true);
+    }
+
+    //If the torches are destroyed we get a million errors lol
+    public override void OnShot(string tag)
+    {
+        if (tag == "Reset")
+            Reset();
     }
 }
