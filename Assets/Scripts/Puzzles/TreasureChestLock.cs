@@ -26,6 +26,12 @@ public class TreasureChestLock : ScannableObject
 
     private void OnDestroy()
     {
+        GameObject[] fruits = GameObject.FindGameObjectsWithTag("Fruit");
+        
+        foreach(GameObject fruit in fruits)
+        {
+            fruit.transform.tag = "Magnetic";
+        }
         chest.WinCondition();
     }
 }
