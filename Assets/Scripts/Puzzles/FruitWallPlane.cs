@@ -40,6 +40,10 @@ public class FruitWallPlane : MonoBehaviour
             {
                 GetComponent<MeshRenderer>().material = correctMaterial;
                 puzzle.PlaneSolved();
+
+                MaterialGiver materialGiver = gameObject.AddComponent<MaterialGiver>();
+                materialGiver.inator = GameObject.Find("Inator").GetComponent<Inator>();
+
             }
         }
     }

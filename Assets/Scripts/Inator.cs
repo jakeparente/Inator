@@ -71,8 +71,6 @@ public class Inator : MonoBehaviour
         if (Physics.Raycast(raycastStartPoint.transform.position, raycastStartPoint.transform.forward, out RaycastHit hit, range)
             && hit.transform.gameObject.GetComponent<ScannableObject>() != null)
         {
-            if (hit.transform.gameObject.name == "Red Cube")
-                Debug.Log(hit.transform.gameObject.name);
             hit.transform.gameObject.GetComponent<ScannableObject>().OnScan();
         }
     }
