@@ -5,6 +5,7 @@ using UnityEngine;
 public class TreasureChestLock : ScannableObject
 {
     public TreasureChest chest;
+    public GameObject text;
 
     public override void OnShot(GameObject obj)
     {
@@ -32,6 +33,7 @@ public class TreasureChestLock : ScannableObject
         {
             fruit.transform.tag = "Magnetic";
         }
+        text.SetActive(true);
         chest.WinCondition();
     }
 }
