@@ -38,7 +38,7 @@ public class Inator : MonoBehaviour
     public void ShootProjectile(GameObject loadedProjectile)
     {
         GameObject firedProjectile = Instantiate(loadedProjectile, raycastStartPoint.transform.position, raycastStartPoint.transform.rotation);
-        firedProjectile.GetComponent<Rigidbody>().AddForce(raycastStartPoint.transform.forward * 500f);
+        firedProjectile.GetComponent<Rigidbody>().AddForce(raycastStartPoint.transform.forward * 1000f);
         firedProjectile.GetComponent<Rigidbody>().useGravity = true;
         firedProjectile.transform.tag = "FiredProjectile";
     }
