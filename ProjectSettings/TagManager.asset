@@ -7,10 +7,10 @@ TagManager:
   - SpawnedLoadedObject
   - LoadedObjectClone
   - FiredProjectile
-  - SpawnedLoadedEffect
   - Environment
   - Magnetic
   - Fruit
+  - SpawnedFire
   layers:
   - Default
   - TransparentFX

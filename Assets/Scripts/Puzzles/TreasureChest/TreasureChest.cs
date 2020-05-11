@@ -24,12 +24,8 @@ public class TreasureChest : MonoBehaviour
         if (top != null)
         {
             top.transform.localEulerAngles = new Vector3(-90f, 0f, 0f);
-            prize.SetActive(true);
+            if (prize != null)
+                prize.SetActive(true);
         }
-    }
-
-    internal void Open()
-    {
-        throw new NotImplementedException();
     }
 }

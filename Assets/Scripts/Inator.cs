@@ -10,7 +10,7 @@ using UnityEngine.Audio;
 
 public class Inator : MonoBehaviour
 {
-    public enum InatorType { Empty, Material, Object, Eraser, Projectile, Reset, Effect, Magnet }
+    public enum InatorType { Empty, Material, Fire, Tophat, Eraser, Projectile, Reset, Magnet }
     public InatorType type;
 
     public Material loadedMaterial = null;
@@ -38,8 +38,11 @@ public class Inator : MonoBehaviour
     public void ShootProjectile(GameObject loadedProjectile)
     {
         GameObject firedProjectile = Instantiate(loadedProjectile, raycastStartPoint.transform.position, raycastStartPoint.transform.rotation);
-        firedProjectile.GetComponent<Rigidbody>().AddForce(raycastStartPoint.transform.forward * 1000f);
-        firedProjectile.GetComponent<Rigidbody>().useGravity = true;
+
+        Rigidbody rb = firedProjectile.GetComponent<Rigidbody>();
+        rb.AddForce(raycastStartPoint.transform.forward * 1000f);
+        rb.useGravity = true;
+
         firedProjectile.transform.tag = "FiredProjectile";
     }
 
@@ -51,16 +54,16 @@ public class Inator : MonoBehaviour
             ShootProjectile(loadedObject);
 
         else if (Physics.Raycast(raycastStartPoint.transform.position, raycastStartPoint.transform.forward, out RaycastHit hit, range)
-            && hit.transform.gameObject.GetComponent<ScannableObject>() != null)
+            && hit.transform.TryGetComponent(out ScannableObject scannable))
         {
-            if (type == InatorType.Object || type == InatorType.Effect || type == InatorType.Magnet)
-                hit.transform.gameObject.GetComponent<ScannableObject>().OnShot(loadedObject);
+            if (type == InatorType.Tophat || type == InatorType.Fire || type == InatorType.Magnet)
+               scannable.OnShot(loadedObject, type.ToString());
+
+            else if (type == InatorType.Eraser || type == InatorType.Reset)
+                scannable.OnShot(type.ToString());
+
             else if (type == InatorType.Material)
-                hit.transform.gameObject.GetComponent<ScannableObject>().OnShot(loadedMaterial);
-            else if (type == InatorType.Eraser)
-                hit.transform.gameObject.GetComponent<ScannableObject>().OnShot("Eraser");
-            else if (type == InatorType.Reset)
-                hit.transform.gameObject.GetComponent<ScannableObject>().OnShot("Reset");
+                scannable.OnShot(loadedMaterial);
         }
     }
 
@@ -69,9 +72,9 @@ public class Inator : MonoBehaviour
         audioSource.clip = scanClip;
         audioSource.Play();
         if (Physics.Raycast(raycastStartPoint.transform.position, raycastStartPoint.transform.forward, out RaycastHit hit, range)
-            && hit.transform.gameObject.GetComponent<ScannableObject>() != null)
+            && hit.transform.TryGetComponent(out ScannableObject scannable))
         {
-            hit.transform.gameObject.GetComponent<ScannableObject>().OnScan();
+            scannable.OnScan();
         }
     }
 
@@ -118,8 +121,8 @@ public class Inator : MonoBehaviour
         loadedObject = Instantiate(scannedObject);
         loadedObject.transform.position = new Vector3(0f, -10f, 0f);
 
-        if (loadedObject.GetComponent<Rigidbody>() != null)
-            loadedObject.GetComponent<Rigidbody>().useGravity = (type == InatorType.Projectile) ? true : false;
+        if (loadedObject.TryGetComponent(out Rigidbody rb))
+            rb.useGravity = (type == InatorType.Projectile) ? true : false;
 
         loadedObject.transform.tag = "LoadedObjectClone";
         loadedMaterial = null;

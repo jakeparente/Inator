@@ -14,7 +14,6 @@ public class InatorController : MonoBehaviour
     private XRController controller;
     private XRBaseInteractor interactor;
     private InputHelpers.Button[] scanButtons;
-    private float activationThreshhold = 0.1f;
 
     void Start()
     {
@@ -29,8 +28,8 @@ public class InatorController : MonoBehaviour
     {
         if (isGrabbing && interactor.selectTarget.gameObject == inator.gameObject)
         {
-            InputHelpers.IsPressed(controller.inputDevice, scanButtons[0], out bool primaryActivated, activationThreshhold);
-            InputHelpers.IsPressed(controller.inputDevice, scanButtons[1], out bool secondaryActivated, activationThreshhold);
+            InputHelpers.IsPressed(controller.inputDevice, scanButtons[0], out bool primaryActivated, 0.1f);
+            InputHelpers.IsPressed(controller.inputDevice, scanButtons[1], out bool secondaryActivated, 0.1f);
 
             if (primaryActivated || secondaryActivated)
             {
@@ -38,7 +37,7 @@ public class InatorController : MonoBehaviour
                 inator.Scan();
             }
 
-            InputHelpers.IsPressed(controller.inputDevice, InputHelpers.Button.Trigger, out bool triggerActivated, activationThreshhold);
+            InputHelpers.IsPressed(controller.inputDevice, InputHelpers.Button.Trigger, out bool triggerActivated, 0.1f);
             if (triggerActivated)
                 controller.SendHapticImpulse(0.4f, 0.1f);
         }

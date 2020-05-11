@@ -6,13 +6,14 @@ public class MaterialGiver : ScannableObject
 {
     [HideInInspector]
     public MeshRenderer meshRenderer;
+
     public Material backupMaterial;
 
     public override void Start()
     {
         base.Start();
-        if (GetComponent<MeshRenderer>() != null)
-            meshRenderer = GetComponent<MeshRenderer>();
+        if (TryGetComponent(out MeshRenderer m))
+            meshRenderer = m;
     }
 
     public override void OnScan()

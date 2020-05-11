@@ -5,7 +5,7 @@ using UnityEngine;
 public class Environment : MaterialGiver
 {
     //Just so you cant spawn an object in the middle of the floor
-    public override void OnShot(GameObject obj)
+    public override void OnShot(GameObject obj, string tag)
     {
         return;
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectGiver : ScannableObject
+public class FireGiver : ScannableObject
 {
     private ParticleSystem[] particleSystems;
     private ParticleSystem.MinMaxGradient[] originalColors;
@@ -21,7 +21,7 @@ public class EffectGiver : ScannableObject
 
     public override void OnScan()
     {
-        inator.LoadInator(scannedName, this.gameObject, "Effect");
+        inator.LoadInator(scannedName, this.gameObject, "Fire");
         base.OnScan();
     }
 
@@ -38,13 +38,13 @@ public class EffectGiver : ScannableObject
         }
     }
 
-    //Cannot spawn an object on an effect
-    public override void OnShot(GameObject obj)
+    //Cannot spawn an object on a fire
+    public override void OnShot(GameObject obj, string tag)
     {
         return;
     }
 
-    //Effects have no mesh renderer
+    //Fires have no mesh renderer
     public override void Reset()
     {
         for (int i = 0; i < particleSystems.Length; i++)
@@ -59,10 +59,14 @@ public class EffectGiver : ScannableObject
                 Destroy(child.gameObject);
     }
 
-    //transfer the effect when an object touches it
+    //Transfer the fire when an object touches it
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<ScannableObject>() != null && other.gameObject.tag != "Environment" && other.gameObject.tag != "Fruit")
-            other.gameObject.GetComponent<ScannableObject>().SpawnObject(this.gameObject, true);
+        if (other.gameObject.TryGetComponent(out ScannableObject scannable)
+            && other.gameObject.tag != "Environment"
+            && other.gameObject.tag != "Fruit")
+        {
+            scannable.SpawnFire(this.gameObject);
+        }
     }
 }

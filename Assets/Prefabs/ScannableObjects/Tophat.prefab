@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scannedName: Tophat
   inator: {fileID: 0}
+  objectTag: Tophat
 --- !u!114 &5885102353214836555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topHatLocation: {x: 0, y: 0.25, z: 0}
   scale: {x: 0.5, y: 0.5, z: 0.5}
+  rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!1 &2954728025980413419
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class FruitWallPlane : MonoBehaviour
     private void Start()
     {
         puzzle = GetComponentInParent<WallFruitPuzzle>();
-        //StartCoroutine(TestMode());
+        StartCoroutine(TestMode());
     }
 
     private IEnumerator TestMode()
@@ -32,18 +32,17 @@ public class FruitWallPlane : MonoBehaviour
         if (GetComponent<MeshRenderer>().material == correctMaterial)
             return;
 
-        if (other.gameObject.GetComponent<MeshRenderer>())
+        if (other.gameObject.TryGetComponent(out MeshRenderer meshRenderer))
         {
             if ((other.gameObject.name.Split(char.Parse(" "))[0] == correctFruit
                 || other.gameObject.name.Split(char.Parse("("))[0] == correctFruit)
-                && other.gameObject.GetComponent<MeshRenderer>().material.name.Split(char.Parse(" "))[0] == correctMaterial.name)
+                && meshRenderer.material.name.Split(char.Parse(" "))[0] == correctMaterial.name)
             {
                 GetComponent<MeshRenderer>().material = correctMaterial;
                 puzzle.PlaneSolved();
 
                 MaterialGiver materialGiver = gameObject.AddComponent<MaterialGiver>();
                 materialGiver.inator = GameObject.Find("Inator").GetComponent<Inator>();
-
             }
         }
     }

@@ -7,11 +7,11 @@ public class TreasureChestLock : ScannableObject
     public TreasureChest chest;
     public GameObject text;
 
-    public override void OnShot(GameObject obj)
+    //Lock can only be shot by an eraser
+    public override void OnShot(GameObject obj, string tag)
     {
         return;
     }
-
     public override void OnShot(Material material)
     {
         return;
@@ -33,7 +33,9 @@ public class TreasureChestLock : ScannableObject
         {
             fruit.transform.tag = "Magnetic";
         }
-        text.SetActive(true);
+
+        if (text != null)
+            text.SetActive(true);
         chest.WinCondition();
     }
 }

@@ -14,7 +14,6 @@ public class WallCubesPuzzle : MonoBehaviour
     {
         if (piecesLeft <= 0)
         {
-            Debug.Log("DING DING DING");
             clue.SetActive(true);
             Destroy(this.gameObject);
         }

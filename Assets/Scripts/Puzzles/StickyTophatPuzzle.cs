@@ -8,11 +8,11 @@ public class StickyTophatPuzzle : MaterialGiver
     public Material successMaterial;
     public GameObject clue;
 
-    public override void OnShot(GameObject obj)
+    public override void OnShot(GameObject obj, string tag)
     {
-        if (inator.type == Inator.InatorType.Object && obj != null)
+        if (inator.type == Inator.InatorType.Tophat && obj != null)
             PuzzleSuccess();
-        base.OnShot(obj);
+        base.OnShot(obj, tag);
     }
 
     private void PuzzleSuccess()
